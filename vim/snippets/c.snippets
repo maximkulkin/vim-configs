@@ -1,0 +1,50 @@
+# main()
+snippet mainargs
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main(int argc, const char *argv[])
+	{
+		${1}
+		return 0;
+	}
+	
+snippet main
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main()
+	{
+		${1}
+		return 0;
+	}
+	
+# #include <...>
+snippet inc
+	#include <${1:stdio}.h>${2}
+# #include "..."
+snippet Inc
+	#include "${1:`Filename("$1.h")`}"${2}
+# Header Include-Guard
+snippet once
+	#ifndef ${1:`toupper(Filename('__$1_H', '__UNTITLED_H'))`}
+	#define $1
+
+	${2}
+
+	#endif /* $1 */
+# For Loop
+snippet for
+	for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+		${4:/* code */}
+	}
+# Typedef struct
+snippet tds
+	typedef struct ${2:_$1 }{
+		${3:/* data */}
+	} ${1:`Filename('$1_t', 'name')`};
+# Typdef enum
+snippet tde
+	typedef enum {
+		${1:/* data */}
+	} ${2:foo};
