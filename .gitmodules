@@ -10,3 +10,6 @@
 [submodule "vim/bundle/vim-rooter"]
 	path = vim/bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
