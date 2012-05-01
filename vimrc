@@ -53,6 +53,9 @@ set modelines=5
 " Or use vividchalk
 colorscheme vividchalk
 
+" Make file saving with 'W' as a mistype it so often
+command! W :w
+
 nmap <C-n> :bn<cr>
 nmap <C-p> :bp<cr>
 nmap <C-e> :b#<cr>
