@@ -86,6 +86,8 @@ let g:sql_type_default = 'mysql'
 set guifont=Andale\ Mono:h18
 set guioptions=acg
 
+let g:bufExplorerShowRelativePath=1
+
 " quick exit from insert mode
 inoremap jk <esc>
 " edit and source vim config quickly
