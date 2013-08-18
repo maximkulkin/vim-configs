@@ -86,3 +86,9 @@ let g:sql_type_default = 'mysql'
 set guifont=Andale\ Mono:h18
 set guioptions=acg
 
+" quick exit from insert mode
+inoremap jk <esc>
+" edit and source vim config quickly
+nnoremap <leader>ev :e ~/.vimrc<cr>
+nnoremap <leader>es :source ~/.vimrc<cr>
+
