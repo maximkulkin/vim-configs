@@ -1,0 +1,8 @@
+Haskell
+=======
+
+Haskell mode requires "hdevtools" tool to support advanced syntax check and error reporting. Install it with
+
+    cabal install hdevtools
+
+

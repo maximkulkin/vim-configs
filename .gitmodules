@@ -49,3 +49,9 @@
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/vim-hdevtools"]
+	path = vim/bundle/vim-hdevtools
+	url = https://github.com/bitc/vim-hdevtools.git
