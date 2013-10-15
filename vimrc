@@ -97,3 +97,5 @@ nnoremap <leader>es :source ~/.vimrc<cr>
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
+runtime python_location.vim
+
