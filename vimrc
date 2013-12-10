@@ -5,7 +5,7 @@ set nocompatible                  " Must come first because it changes other opt
 
 " Init bundle stuff
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-silent! call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
@@ -58,10 +58,24 @@ colorscheme vividchalk
 " Make file saving with 'W' as a mistype it so often
 command! W :w
 
-nmap <C-n> :bn<cr>
-nmap <C-p> :bp<cr>
 nmap <C-e> :b#<cr>
 nmap <C-h> :nohlsearch<cr>
+
+nnoremap    [unite]   <Nop>
+nmap    <leader>f [unite]
+
+nnoremap <silent> [unite]f  :<C-u>Unite
+        \ -buffer-name=files -start-insert file_rec<CR>
+nnoremap <silent> [unite]b  :<C-u>Unite
+        \ -buffer-name=buffers -prompt=%\  buffer bookmark<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite
+        \ -buffer-name=registers register<CR>
+
+" let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 1
+let g:unite_enable_short_source_names = 1
+let g:unite_winheight = 10
+let g:unite_split_rule = 'botright'
 
 " Uncomment to use Jamis Buck's file opening plugin
 "map <Leader>t :FuzzyFinderTextMate<Enter>
