@@ -116,4 +116,5 @@ au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 runtime python_location.vim
 
 let g:pymode_folding=0
+let g:pymode_lint_mccabe_complexity=16
 
