@@ -55,8 +55,10 @@ set modelines=5
 " Or use vividchalk
 colorscheme vividchalk
 
-" Make file saving with 'W' as a mistype it so often
+" Common annoying command mistypes
 command! W :w
+command! Q :q
+command! Bd :bd
 
 nmap <C-e> :b#<cr>
 nmap <C-h> :nohlsearch<cr>
