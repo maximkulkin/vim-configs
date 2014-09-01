@@ -118,3 +118,10 @@ runtime python_location.vim
 let g:pymode_folding=0
 let g:pymode_lint_mccabe_complexity=16
 
+
+augroup HaskellHeredocHighlight
+  au FileType haskell syn region HaskellHeredoc start="\[i|" end="|]" contains=HaskellHeredocExpr
+  au FileType haskell syn region HaskellHeredocExpr start="${" end="}" keepend contained contains=TOP
+  au FileType haskell hi link HaskellHeredoc   String
+augroup END
+
