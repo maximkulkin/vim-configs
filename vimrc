@@ -6,6 +6,7 @@ set nocompatible                  " Must come first because it changes other opt
 " Init bundle stuff
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+Helptags                          " Fix help
 
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
