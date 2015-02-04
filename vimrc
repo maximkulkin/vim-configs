@@ -80,6 +80,13 @@ let g:unite_enable_short_source_names = 1
 let g:unite_winheight = 10
 let g:unite_split_rule = 'botright'
 
+call unite#custom#source('file_rec', 'ignore_pattern',
+  \'\%(^\|/\)\.$'.
+  \'\|\~$'.
+  \'\|\.\%(o\|DS_Store\|zwc\|pyc\|sw[po]\|class\)$'.
+  \'\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'.
+  \'\|dist')
+
 " Uncomment to use Jamis Buck's file opening plugin
 "map <Leader>t :FuzzyFinderTextMate<Enter>
 
