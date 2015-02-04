@@ -126,3 +126,6 @@ augroup HaskellHeredocHighlight
   au FileType haskell hi link HaskellHeredoc   String
 augroup END
 
+" Show trailing whitepace and spaces before a tab:
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
