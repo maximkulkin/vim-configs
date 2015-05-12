@@ -1,0 +1,21 @@
+#!/bin/bash
+
+absolute-path() {
+  (cd "$1" && pwd)
+}
+
+relative-path() {
+  local targetDir="$(absolute-path "$1")"
+  local pivotDir="$(absolute-path "$2")"
+  echo "${targetDir#$pivotDir/}"
+}
+
+relativeDir="$(relative-path "$(dirname "$0")" "$HOME")"
+
+git -C "$(dirname "$0")" submodule init
+git -C "$(dirname "$0")" submodule update
+
+test -d ~/.vim || \
+  ln -s $relativeDir/vim ~/.vim
+test -e ~/.vimrc || \
+  ln -s $relativeDir/vimrc ~/.vimrc
