@@ -53,6 +53,8 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %=%-16(\ %l,%c-%v\ %)%P
 set modeline
 set modelines=5
 
+set splitbelow
+
 " Or use vividchalk
 colorscheme vividchalk
 
