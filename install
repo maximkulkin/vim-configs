@@ -19,3 +19,5 @@ test -d ~/.vim || \
   ln -s $relativeDir/vim ~/.vim
 test -e ~/.vimrc || \
   ln -s $relativeDir/vimrc ~/.vimrc
+test -d ~/.vim/tmp || \
+  mkdir ~/.vim/tmp
