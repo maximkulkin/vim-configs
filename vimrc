@@ -55,6 +55,9 @@ set modelines=5
 
 set splitbelow
 
+set list
+set listchars=tab:\|_,trail:.
+
 " Or use vividchalk
 colorscheme vividchalk
 
