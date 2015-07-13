@@ -138,3 +138,6 @@ augroup END
 " Show trailing whitepace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" Airline settings
+let g:airline_powerline_fonts = 1
