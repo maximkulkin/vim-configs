@@ -89,30 +89,15 @@ call unite#custom#source('file_rec', 'ignore_pattern',
   \'\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'.
   \'\|dist')
 
-" Uncomment to use Jamis Buck's file opening plugin
-"map <Leader>t :FuzzyFinderTextMate<Enter>
-
-" Controversial...swap colon and semicolon for easier commands
-"nnoremap ; :
-"nnoremap : ;
-
-"vnoremap ; :
-"vnoremap : ;
-
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby set foldmethod=syntax
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
-
-" For the MakeGreen plugin and Ruby RSpec. Uncomment to use.
-" autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
 let g:ftplugin_sql_omni_key = '<C-q>'
 let g:sql_type_default = 'mysql'
 
 set guifont=Andale\ Mono:h18
 set guioptions=acg
-
-let g:bufExplorerShowRelativePath=1
 
 " quick exit from insert mode
 inoremap jk <esc>
@@ -132,7 +117,7 @@ augroup HaskellHeredocHighlight
   au FileType haskell hi link HaskellHeredoc   String
 augroup END
 
-" Show trailing whitepace and spaces before a tab:
+" Show trailing whitepace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
