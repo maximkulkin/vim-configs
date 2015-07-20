@@ -107,6 +107,10 @@ inoremap jk <esc>
 " edit and source vim config quickly
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>es :source ~/.vimrc<cr>
+nnoremap <leader>t :ConqueTermSplit bash<cr>
+
+vnoremap # :s/^\([ \t]*\)\([^ \t]\)/\1# \2/e<cr>:nohlsearch<cr>
+vnoremap -# :s/^\([ \t]*\)# /\1/e<cr>
 
 runtime python_location.vim
 
@@ -121,8 +125,11 @@ augroup HaskellHeredocHighlight
 augroup END
 
 " Show trailing whitepace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
 
 " Airline settings
 let g:airline_powerline_fonts = 1
+
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
