@@ -114,8 +114,30 @@ vnoremap -# :s/^\([ \t]*\)# /\1/e<cr>
 
 runtime python_location.vim
 
-let g:pymode_folding=0
-let g:pymode_lint_mccabe_complexity=16
+let g:pymode_motion = 1
+
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 1
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_message = 1
+let g:pymode_lint_ignore = 'E501,W'
+let g:pymode_lint_sort = ['E', 'C', 'I']
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_signs = 1
+let g:pymode_folding = 0
+let g:pymode_lint_mccabe_complexity = 16
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+
+let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+let g:pymode_rope_autoimport_bind = '<C-c>ra'
+
+let g:pymode_syntax_all = 1
 
 
 augroup HaskellHeredocHighlight
