@@ -54,9 +54,12 @@ set modeline
 set modelines=5
 
 set splitbelow
+set splitright
 
 set list
 set listchars=tab:\|_,trail:.
+
+set colorcolumn=85
 
 " Or use vividchalk
 colorscheme vividchalk
@@ -89,7 +92,7 @@ call unite#custom#source('file_rec', 'ignore_pattern',
   \'\%(^\|/\)\.$'.
   \'\|\~$'.
   \'\|\.\%(o\|DS_Store\|zwc\|pyc\|sw[po]\|class\)$'.
-  \'\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'.
+  \'\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|\.virtualenv\|tags\%(-.*\)\?\)\%($\|/\)'.
   \'\|dist')
 
 " Automatic fold settings for specific files. Uncomment to use.
@@ -122,7 +125,7 @@ let g:pymode_doc_bind = 'K'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_unmodified = 1
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_message = 1
 let g:pymode_lint_ignore = 'E501,W'
 let g:pymode_lint_sort = ['E', 'C', 'I']
@@ -131,6 +134,7 @@ let g:pymode_lint_signs = 1
 let g:pymode_folding = 0
 let g:pymode_lint_mccabe_complexity = 16
 
+let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 
