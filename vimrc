@@ -110,7 +110,6 @@ inoremap jk <esc>
 " edit and source vim config quickly
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>es :source ~/.vimrc<cr>
-nnoremap <leader>t :ConqueTermSplit bash<cr>
 
 vnoremap # :s/^\([ \t]*\)\([^ \t]\)/\1# \2/e<cr>:nohlsearch<cr>
 vnoremap -# :s/^\([ \t]*\)# /\1/e<cr>
