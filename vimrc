@@ -111,9 +111,16 @@ inoremap jk <esc>
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>es :source ~/.vimrc<cr>
 
+" comment/uncomment lines
 vnoremap # :s/^\([ \t]*\)\([^ \t]\)/\1# \2/e<cr>:nohlsearch<cr>
 vnoremap -# :s/^\([ \t]*\)# /\1/e<cr>
 
+" Settings for vim-test
+nnoremap <silent> <leader>tt :TestFile<cr>
+nnoremap <silent> <leader>tf :TestFile<cr>
+nnoremap <silent> <leader>tn :TestNearest<cr>
+
+" Settings for python plugins
 runtime python_location.vim
 
 let g:pymode_motion = 1
