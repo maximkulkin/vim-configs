@@ -73,6 +73,8 @@ command! Bd :bd
 nmap <C-e> :b#<cr>
 nmap <C-h> :nohlsearch<cr>
 
+nmap E :e <c-r>=expand("%:h")<cr>/
+
 nnoremap    [unite]   <Nop>
 nmap    <leader>f [unite]
 
