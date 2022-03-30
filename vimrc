@@ -41,7 +41,7 @@ set visualbell                    " No beeping.
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
-set directory=.,$HOME/.vim/tmp/   " Keep swap files in one location
+set directory=$HOME/.vim/tmp/     " Keep swap files in one location
 
 set tabstop=4                     " Global tab width.
 set shiftwidth=4                  " And again, related.
