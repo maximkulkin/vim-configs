@@ -12,8 +12,9 @@ relative-path() {
 
 relativeDir="$(relative-path "$(dirname "$0")" "$HOME")"
 
-git -C "$(dirname "$0")" submodule init
-git -C "$(dirname "$0")" submodule update
+brew install nodejs
+# install advanced file search tools
+brew install fd fzf
 
 test -d ~/.vim || \
   ln -s $relativeDir/vim ~/.vim

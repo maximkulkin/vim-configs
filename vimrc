@@ -3,15 +3,8 @@
 
 set nocompatible                  " Must come first because it changes other options.
 
-" Init bundle stuff
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-Helptags                          " Fix help
-
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
-
-runtime macros/matchit.vim        " Load the matchit plugin.
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -62,8 +55,8 @@ set listchars=tab:\|_,trail:.
 set textwidth=85
 set colorcolumn=85
 
-" Or use vividchalk
-colorscheme vividchalk
+set nocindent
+set smartindent
 
 " Common annoying command mistypes
 command! W :w
@@ -75,36 +68,6 @@ nmap <C-h> :nohlsearch<cr>
 
 nmap E :e <c-r>=expand("%:h")<cr>/
 
-nnoremap    [unite]   <Nop>
-nmap    <leader>f [unite]
-
-nnoremap <silent> [unite]f  :<C-u>Unite
-        \ -buffer-name=files -start-insert file_rec<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite
-        \ -buffer-name=buffers -prompt=%\  buffer bookmark<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite
-        \ -buffer-name=registers register<CR>
-
-" let g:unite_enable_start_insert = 1
-let g:unite_enable_start_insert = 1
-let g:unite_enable_short_source_names = 1
-let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
-
-call unite#custom#source('file_rec', 'ignore_pattern',
-  \'\%(^\|/\)\.$'.
-  \'\|\~$'.
-  \'\|\.\%(o\|DS_Store\|zwc\|pyc\|sw[po]\|class\)$'.
-  \'\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|\.virtualenv\|tags\%(-.*\)\?\)\%($\|/\)'.
-  \'\|dist')
-
-" Automatic fold settings for specific files. Uncomment to use.
-" autocmd FileType ruby set foldmethod=syntax
-" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
-
-let g:ftplugin_sql_omni_key = '<C-q>'
-let g:sql_type_default = 'mysql'
-
 set guifont=Andale\ Mono:h18
 set guioptions=acg
 
@@ -114,59 +77,144 @@ inoremap jk <esc>
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>es :source ~/.vimrc<cr>
 
+
+" Plugins
+call plug#begin()
+" syntax scheme
+Plug 'tpope/vim-vividchalk'
+" Extend '.' (repeat last action) command to support non-native actions
+Plug 'tpope/vim-repeat'
+" Commands to surround/remove surrond text
+Plug 'tpope/vim-surround'
+" Highlight nested parenthesis with different colors
+Plug 'luochen1990/rainbow'
+" Automatically change directory to project root
+Plug 'airblade/vim-rooter'
+
+" Fuzzy search for files/buffers
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Linter errors highlight
+Plug 'dense-analysis/ale'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+" Show linter errors in status line
+Plug 'maximbaz/lightline-ale'
+
+" C# language server integration
+Plug 'OmniSharp/omnisharp-vim'
+" C# Mappings, code-actions available flag and statusline integration
+Plug 'nickspoons/vim-sharpenup'
+
+" Run tests from inside editor
+Plug 'janko-m/vim-test'
+
+" Completions
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fannheyward/coc-pyright'
+
+" Interactive debugger
+Plug 'puremourning/vimspector'
+
+call plug#end()
+
+" use vividchalk
+colorscheme vividchalk
+
 " comment/uncomment lines
 vnoremap # :s/^\([ \t]*\)\([^ \t]\)/\1# \2/e<cr>:nohlsearch<cr>
 vnoremap -# :s/^\([ \t]*\)# /\1/e<cr>
+
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fb :Buffers<cr>
 
 " Settings for vim-test
 nnoremap <silent> <leader>tt :TestFile<cr>
 nnoremap <silent> <leader>tf :TestFile<cr>
 nnoremap <silent> <leader>tn :TestNearest<cr>
 
-" Settings for python plugins
-runtime python_location.vim
-
-let g:pymode_motion = 1
-
-let g:pymode_doc = 0
-let g:pymode_doc_bind = 'K'
-
-let g:pymode_lint = 0
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_message = 1
-let g:pymode_lint_ignore = 'E501,W'
-let g:pymode_lint_sort = ['E', 'C', 'I']
-let g:pymode_lint_cwindow = 1
-let g:pymode_lint_signs = 1
-let g:pymode_folding = 0
-let g:pymode_lint_mccabe_complexity = 16
-
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-
-let g:pymode_rope_organize_imports_bind = '<C-c>ro'
-let g:pymode_rope_autoimport_bind = '<C-c>ra'
-
-let g:pymode_syntax_all = 1
-
-
-augroup HaskellHeredocHighlight
-  au FileType haskell syn region HaskellHeredoc start="\[i|" end="|]" contains=HaskellHeredocExpr
-  au FileType haskell syn region HaskellHeredocExpr start="${" end="}" keepend contained contains=TOP
-  au FileType haskell hi link HaskellHeredoc   String
-augroup END
-
-" Show trailing whitepace
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
-
-" Airline settings
-let g:airline_powerline_fonts = 1
-
-let g:gist_show_privates = 1
-let g:gist_post_private = 1
-
 let g:rainbox_active = 1
+
+" FZF
+" let g:fzf_action = {
+" \  'ctrl-t': 'vsplit'
+" \}
+" let g:fzf_layout = { 'window': {
+" \ 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0
+" \} }
+let g:fzf_layout = { 'down': '30%' }
+
+" ALE
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" Lightline
+let g:lightline = {}
+let g:lightline.component_expand = {
+\  'linter_checking': 'lightline#ale#checking',
+\  'linter_infos': 'lightline#ale#infos',
+\  'linter_warnings': 'lightline#ale#warnings',
+\  'linter_errors': 'lightline#ale#errors',
+\  'linter_ok': 'lightline#ale#ok',
+\}
+
+let g:lightline.component_type = {
+\  'linter_checking': 'right',
+\  'linter_infos': 'right',
+\  'linter_warnings': 'warning',
+\  'linter_errors': 'error',
+\  'linter_ok': 'right',
+\}
+
+let g:lightline.active = {
+\ 'right': [
+\   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+\   [ 'lineinfo' ],
+\   [ 'percent' ],
+\   [ 'filetype']
+\ ]
+\}
+
+" OmniSharp
+let g:OmniSharp_popup_position = 'peek'
+let g:OmniSharp_popup_options = {
+\ 'highlight': 'Normal',
+\ 'padding': [0],
+\ 'border': [1],
+\ 'borderchars': ['─', '│', '─', '│', '╭', '╮', '╯', '╰'],
+\ 'borderhighlight': ['ModeMsg']
+\}
+let g:OmniSharp_popup_mappings = {
+\ 'sigNext': '<C-n>',
+\ 'sigPrev': '<C-p>',
+\ 'pageDown': ['<C-f>', '<PageDown>'],
+\ 'pageUp': ['<C-b>', '<PageUp>']
+\}
+
+let g:OmniSharp_highlight_groups = {
+\ 'ExcludedCode': 'NonText'
+\}
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = 'fzf'
+
+autocmd FileType cs nmap <silent> gd :OmniSharpGotoDefinition<cr>
+autocmd FileType cs nnoremap <buffer> <leader>fu :OmniSharpFindUsages<cr>
+autocmd FileType cs nnoremap <buffer> <leader>fi :OmniSharpFindImplementations<cr>
+autocmd FileType cs nnoremap <leader>a :OmniSharpCodeActions<cr>
+
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+
+nnoremap <leader>dd :call vimspector#Launch()<cr>
+nnoremap <leader>de :call vimspector#Reset()<cr>
+nnoremap <leader>dc :call vimspector#Continue()<cr>
+
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<cr>
+
+nnoremap <leader>do <Plug>VimspectorStepOver
+nnoremap <leader>di <Plug>VimspectorStepInto
+nnoremap <leader>dO <Plug>VimspectorStepOut
+
+nnoremap <leader>dw <Plug>VimspectorWatch

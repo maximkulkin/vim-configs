@@ -1,4 +1,6 @@
 *.swp
 *.swo
 vim/.netrwhist
+vim/plugged/
+vim/tmp/
 
